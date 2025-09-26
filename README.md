@@ -32,7 +32,7 @@ brew install ollama
 
 ```
 
-Start the Ollama server
+Open another terminal and start the Ollama server
 
 ```bash
 # Foreground (good for first run / debugging):
@@ -42,7 +42,7 @@ ollama serve
 # to stop: brew services stop ollama
 ```
 
-- Pull a small instruct model (example):
+- Come back and Pull a small instruct model (example):
 
 ```bash
 ollama pull llama3.1:8b-instruct-q4_K_M
@@ -60,16 +60,16 @@ This creates `index/faiss.index` and `index/metadata.json`.
 
 ## 3) Ask questions (chat loop)
 
-Optional (OpenAI) with automatic fallback to Ollama on 429/quota error:
-
-```bash
-python ask.py --index_dir index --llm openai --openai_model gpt-4o-mini --ollama_model llama3.1:8b-instruct-q4_K_M
-```
-
 Primary Use Ollama only (no OpenAI):
 
 ```bash
 python ask.py --index_dir index --llm ollama --ollama_model llama3.1:8b-instruct-q4_K_M
+```
+
+Optional (OpenAI) with automatic fallback to Ollama on 429/quota error:
+
+```bash
+python ask.py --index_dir index --llm openai --openai_model gpt-4o-mini --ollama_model llama3.1:8b-instruct-q4_K_M
 ```
 
 - Type your question at the `Q:` prompt.
