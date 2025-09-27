@@ -34,13 +34,31 @@ brew install ollama
 
 Open another terminal and start the Ollama server
 
-```bash
+````bash
 # Foreground (good for first run / debugging):
 ollama serve
-# Background via Homebrew Services (auto-start on login):
-# brew services start ollama
-# to stop: brew services stop ollama
-```
+
+# Stop Ollama server (when you’re done)
+
+# If you started it with just 'ollama serve', stop it with:
+CTRL + C
+
+# If you see the Error
+#  ```
+# ollama serve
+Error: listen tcp 127.0.0.1:11434: bind: address already in use
+#  ```
+# And you just want to restart Ollama:
+# Check which process is using the port:
+lsof -i :11434
+
+# Kill the existing Ollama process and restart:
+kill -9 $(lsof -ti :11434)
+# Verify it’s gone:
+lsof -i :11434 # no output means it’s free
+# Restart Ollama server:
+ollama serve
+````
 
 - Come back and Pull a small instruct model (example):
 

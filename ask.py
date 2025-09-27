@@ -68,6 +68,8 @@ def build_prompt(question: str, contexts: List[str]) -> str:
     )
     return prompt
 
+    
+
 # Not primary
 def call_openai(prompt: str, model: str) -> str:
     api_key = os.getenv("OPENAI_API_KEY")
@@ -184,11 +186,11 @@ def interactive_loop(index_dir: str, embed_model: str, openai_model: str, top_k:
         #                 print(f"Error calling Ollama: {e2}")
         #                 continue
         # else:
-            try:
-                answer = call_ollama(prompt, ollama_url, ollama_model)
-            except Exception as e:
-                print(f"Error calling Ollama: {e}")
-                continue
+        #     try:
+        #         answer = call_ollama(prompt, ollama_url, ollama_model)
+        #     except Exception as e:
+        #         print(f"Error calling Ollama: {e}")
+        #         continue
             
         if llm == "ollama":
             try:
