@@ -167,30 +167,7 @@ def interactive_loop(index_dir: str, embed_model: str, openai_model: str, top_k:
         prompt = build_prompt(query, contexts)
 
         answer: Optional[str] = None # Optional[str] means answer can be a string or None
-        # if llm == "openai":
-        #     try:
-        #         answer = call_openai(prompt, openai_model)
-        #     except Exception as e:
-        #         msg = str(e)
-        #         if "429" in msg or "insufficient_quota" in msg or "quota" in msg.lower():
-        #             print("OpenAI quota error detected. Falling back to Ollama...")
-        #         else:
-        #             print(f"Error calling OpenAI: {e}")
-        #         if answer is None:
-        #             try:
-        #                 if not ensure_ollama_available(ollama_url):
-        #                     print("Ollama not reachable for fallback. Please start Ollama and try again.")
-        #                     continue
-        #                 answer = call_ollama(prompt, ollama_url, ollama_model)
-        #             except Exception as e2:
-        #                 print(f"Error calling Ollama: {e2}")
-        #                 continue
-        # else:
-        #     try:
-        #         answer = call_ollama(prompt, ollama_url, ollama_model)
-        #     except Exception as e:
-        #         print(f"Error calling Ollama: {e}")
-        #         continue
+        
             
         if llm == "ollama":
             try:
